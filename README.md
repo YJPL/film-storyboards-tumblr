@@ -1,2 +1,2 @@
 # film-storyboards-tumblr
-@FilmStoryboards old Tumblr theme code
+[@FilmStoryboards old Tumblr](https://film-storyboards.tumblr.com) theme code, modified from [Hi-Res theme](https://github.com/jstn/high_res/blob/master/highres-1.2.html) by [Justin Ouellette](http://justinouellette.com)
