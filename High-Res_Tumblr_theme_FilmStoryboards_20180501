@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<!--
+	High Res Theme v1.3
+	Modified from High Res Theme v1.2 by alternatyves (1 May 2018)
+	https://github.com/jstn/high_res/blob/master/highres-1.2.html
+-->
+<html>
+	<head>
+		<title>{Title}{block:PostSummary} - {PostSummary}{/block:PostSummary}</title>
+		<meta name="viewport" content="width = device-width" id="viewport" />
+		<meta http-equiv="imagetoolbar" content="no" />
+		<link rel="icon" href="{Favicon}" />
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}" />
+		<meta name="color:Text" content="#333333" />
+		<meta name="color:Link" content="#111111" /> <!-- 1.1 -->
+		<meta name="color:Link Hover" content="#111111" /> <!-- 1.1 -->
+		<meta name="color:Tag" content="#666666" />
+		<meta name="color:Date" content="#999999" />
+		<meta name="color:Background" content="#ffffff" />
+		<meta name="image:Header" content="" />
+		<meta name="if:Fixed Position Header Image" content="0" /> <!-- 1.1 -->
+		<meta name="if:Infinite Scrolling" content="0" />
+		<meta name="if:Show Blog Title" content="1" />
+		<meta name="if:Show Blog Description" content="0" />
+		<meta name="if:Show Headers In Bold" content="0" />
+		<meta name="if:Show Headers In Caps" content="1" />
+		<meta name="if:Show Album Art" content="1" />
+		<meta name="if:Show Tags" content="1" />
+		<meta name="if:Show Dates" content="1" />
+		<meta name="if:Show Note Counts" content="0" />
+		<meta name="if:Show Notes On Permalink Pages" content="0" />
+		<meta name="if:Show Footer Text" content="0" />
+		<meta name="if:Show Followed Tumblrs" content="0" /> <!-- 1.1 -->
+		<meta name="if:Hide Ask Link" content="0" /> <!-- 1.1.1 -->
+		<meta name="if:Hide Submit Link" content="0" /> <!-- 1.1.1 -->
+		<meta name="if:Center Text Posts" content="0" /> <!-- 1.1 -->
+		<meta name="if:Center Link Captions" content="0" /> <!-- 1.1 -->
+		<meta name="if:Center Photo Captions" content="1" />
+		<meta name="if:Center Quotes" content="1" /> <!-- 1.1 -->
+		<meta name="if:Center Chats" content="1" /> <!-- 1.1 -->
+		<meta name="if:Center Audio Captions" content="1" />
+		<meta name="if:Center Video Captions" content="1" />
+		<meta name="if:Use Time Ago For Date" content="0" />
+		<meta name="if:Drop Shadows On Photos" content="0" />
+		<meta name="if:Large Title" content="0" />
+		<meta name="if:Helvetica" content="0" />
+		<meta name="if:Force Video Resize" content="1" />
+		<meta name="if:Scale Photos To Window Width" content="1" />
+		<meta name="text:Forced Video Width" content="954" />
+		<meta name="text:Column Width" content="500" />
+		<meta name="text:Vertical Spacing" content="64" />
+		<meta name="text:Min Image Width" content="0" />
+		<meta name="text:Max Image Width" content="954" />
+		<meta name="text:Font Family" content="menlo,'andale mono','courier new',sans-serif" /> <!-- 1.1 -->
+		<meta name="text:Font Size In Pixels" content="11" /> <!-- 1.1 -->
+		<meta name="text:Line Height In Percent" content="155" /> <!-- 1.1 -->
+		<meta name="text:Footer Text" content='' /><!-- 1.1 -->
+        {block:Description}
+            <meta name="description" content="{MetaDescription}" />
+        {/block:Description}
+		<style type="text/css">
+			html,body { background: {color:Background}; color: {color:Text}; }
+			{block:IfHelvetica}
+				html, body { font: normal 12px helvetica,sans-serif; line-height: 150%; }
+			{/block:IfHelvetica}
+			{block:IfNotHelvetica}
+				html, body { font: normal {text:Font Size In Pixels}px {text:Font Family}; line-height: {text:Line Height In Percent}%; }
+			{/block:IfNotHelvetica}
+
+			a { color: {color:Link}; }
+			a:hover { text-decoration: none; color: {color:Link Hover}; }
+			strong, b { font-weight: bold; }
+			em, i { font-style: italic; }
+			q:before { content: '“'; }
+			q:after { content: '”'; }
+
+			div.regular_body, div.quote_body, div.caption, div.conversation_line, ul#following, #post_notes { width: {text:Column Width}px; margin: 0 auto; }
+			div.regular_body, div.quote_body, div.caption, div.conversation_line { text-align: left; }
+			h1, h2, ul#posts, ul#pages, div#pagers, #header_image_div, div#footer, div#post_notes, ul#following, div.quote div.caption { text-align: center; }
+			{block:IfCenterTextPosts}
+				div.regular_body { text-align: center; }
+			{/block:IfCenterTextPosts}
+			{/block:IfForcedVideoWidth}
+			{block:IfCenterPhotoCaptions}
+				div.photo div.caption { text-align: center; }
+				div.photoset div.caption { text-align: center; }
+			{/block:IfCenterPhotoCaptions}
+			{block:IfCenterQuotes}
+				div.quote_body { text-align: center; }
+			{/block:IfCenterQuotes}
+			{block:IfCenterLinkCaptions}
+				div.link div.caption { text-align: center; }
+			{/block:IfCenterLinkCaptions}
+			{block:IfCenterChats}
+				div.conversation_line { text-align: center; }
+			{/block:IfCenterChats}
+			{block:IfCenterVideoCaptions}
+				div.video div.caption { text-align: center; }
+			{/block:IfCenterVideoCaptions}
+			{block:IfCenterAudioCaptions}
+				div.audio div.caption { text-align: center; }
+			{/block:IfCenterAudioCaptions}
+
+			h1, h2, div.content, ul#pages, ul#following, #header_image_div, li.post, div#pagers, div#footer { margin-top: {text:Vertical Spacing}px; }
+			div#container { margin-bottom: {text:Vertical Spacing}px; }
+			h1 a { text-decoration: none; }
+			div.date, div#post_notes, div.caption, ul.tags { margin-top: 1.5em; }
+			h3, div.content p { margin-bottom: 1.5em; }
+			div.photo_div, div.photoset_div, div.html_photoset, #header_image_div, div.album_art_div { line-height: 0; }
+
+			img.photo_img { margin-bottom: 0.4em; min-width: {text:Min Image Width}px; }
+			div.photoset_div { margin-top: 1.5em; }
+			div.photoset { margin-top: -1.5em; }
+			{block:IfScalePhotosToWindowWidth}
+				html { padding-left: {text:Vertical Spacing}px; padding-right: {text:Vertical Spacing}px; }
+				img.photo_img { max-width: 100%; }
+				{block:IfNotFixedPositionHeaderImage}
+					#header_image, #header_image_div { max-width: 100%; }
+				{/block:IfNotFixedPositionHeaderImage}
+			{/block:IfScalePhotosToWindowWidth}
+			{block:IfNotScalePhotosToWindowWidth}
+				img.photo_img { max-width: {text:Max Image Width}px; }
+			{/block:IfNotScalePhotosToWindowWidth}
+
+			div.date a { color: {color:Date}; text-decoration: none; }
+			div.date a:hover { text-decoration: underline; }
+			img.album_art_img { width: 207px; }
+			blockquote { border-left: 1px solid #999; margin-left: 1em; padding-left: 1em; margin-bottom: 1em; }
+			li.tag { display: inline; margin: 0 1em; }
+			li.tag a { text-decoration: none; color: {color:Tag}; }
+			#post_notes ol.notes li.tag { margin: 0; }
+			div.no_results { font-style: italic; }
+			img.asker_portrait { position: relative; bottom: -6px; height: 20px; width: 20px; }
+			li.page { display: inline; margin: 0 2em; }
+			div#post_notes img.avatar { position: relative; bottom: -4px; }
+
+			li.followed { display: inline; line-height: 0; }
+			li.followed a { line-height: 0; }
+			li.followed img { width: 24px; height: 24px; margin: 2px; vertical-align: middle; }
+
+			li.post ul li { list-style-type: disc; list-style-position: outside; }
+			li.post ol li { list-style-type: decimal; list-style-position: outside; }
+
+			{block:IfDropShadowsOnPhotos}
+				img.photo_img {
+					-webkit-box-shadow: 0px 2px 8px rgba(0,0,0,0.33);
+					-moz-box-shadow: 0px 2px 8px rgba(0,0,0,0.33);
+					box-shadow: 0px 2px 8px rgba(0,0,0,0.33);
+				 }
+			{/block:IfDropShadowsOnPhotos}
+
+			{block:IfShowHeadersInBold}
+				h1,h3,span.conversation_label { font-weight: bold; }
+			{/block:IfShowHeadersInBold}
+
+			{block:IfShowHeadersInCaps}
+				h1,h3,span.conversation_label { text-transform: uppercase; }
+			{/block:IfShowHeadersInCaps}
+
+			{block:IfLargeTitle}
+				h1 { font-size: 64px; line-height: 72px; }
+			{/block:IfLargeTitle}
+
+			{CustomCSS}
+			html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var,optgroup{font-style:inherit;font-weight:inherit;}del,ins{text-decoration:none;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:baseline;}sub{vertical-align:baseline;}legend{color:#000;}input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}input,button,textarea,select{*font-size:100%;}
+		</style>
+		 <!-- <script type="text/javascript" src="https://gumroad.com/js/gumroad.js"></script> -->
+	</head>
+	<body>
+        <!-- Tumblr Theme #30257 -->
+		<div id="container">
+			{block:IfHeaderImage}
+				<div id="header_image_div">
+					<a href="/"><img src="{image:Header}" id="header_image" alt="{Title}" /></a>
+				</div>
+			{/block:IfHeaderImage}
+
+			{block:IfShowBlogTitle}
+				<h1 id="blog_title"><a href="/">{Title}</a></h1>
+			{/block:IfShowBlogTitle}
+
+			{block:IfShowBlogDescription}
+		        {block:Description}
+		            <h2 id="blog_description">{Description}</h2>
+		        {/block:Description}
+			{/block:IfShowBlogDescription}
+
+			{block:HasPages}
+				<ul id="pages">
+					{block:Pages}
+						<li class="page"><a href="{URL}">{Label}</a></li>
+					{/block:Pages}
+				</ul>
+			{/block:HasPages}
+
+			{block:AskEnabled}
+			    {block:IfNotHideAskLink}
+				    <h2 id="ask_link"><a href="/ask">{AskLabel}</a></h2>
+			    {/block:IfNotHideAskLink}
+			{/block:AskEnabled}
+
+			{block:SubmissionsEnabled}
+			    {block:IfNotHideSubmitLink}
+				    <h2 id="submit_link"><a href="/submit">{SubmitLabel}</a></h2>
+				{/block:IfNotHideSubmitLink}
+			{/block:SubmissionsEnabled}
+
+			<ul id="posts">
+				{block:NoSearchResults}
+					<li class="post">
+	            		<div class="no_results">{lang:No results for SearchQuery}</div>
+					</li>
+				{/block:NoSearchResults}
+
+				{block:Posts}
+					<li class="post" id="post_{PostID}">
+						{block:Text}
+		            	    <div class="regular content">
+		            	        {block:Title}<h3>{Title}</h3>{/block:Title}
+		            	        <div class="regular_body">{Body}</div>
+		            	    </div>
+		            	{/block:Text}
+
+						{block:Answer}
+		            	    <div class="answer content">
+								<div class="regular_body">
+									<p><img src="{AskerPortraitURL-24}" alt="{PlaintextAsker}" class="asker_portrait" /> {lang:Asker asked}:</p>
+									<p><blockquote>{Question}</blockquote></p>
+									<p>{Answer}</p>
+								</div>
+		            	    </div>
+		            	{/block:Answer}
+
+		            	{block:Link}
+		                    <div class="link content">
+		                        <h3><a href="{URL}" title="{Name}" {Target}>{Name}</a></h3>
+		                        {block:Description}<div class="caption">{Description}</div>{/block:Description}
+		                    </div>
+		                {/block:Link}
+
+		                {block:Photo}
+		                    <div class="photo content">
+								<div class="photo_div">
+									{LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" title="{Permalink}" class="photo_img" />{LinkCloseTag}
+								</div>
+
+		                        {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+		                    </div>
+		                {/block:Photo}
+
+		                <!-- 1.2 -->
+
+	                	{block:Photoset}
+	                		<div class="photoset content">
+	                			{block:Photos}
+	                				{block:Photo1}
+	                					<!-- firsty -->
+	                				{/block:Photo1}
+		                			<div class="photoset_div">
+		                				<img src="{PhotoURL-HighRes}" class="photo_img" />
+		                			</div>
+							        <!--
+							        {block:Exif}
+						        	    {block:Camera}
+									        Camera: {Camera}
+									    {/block:Camera}
+
+									    {block:Aperture}
+									        Aperture: {Aperture}
+									    {/block:Aperture}
+
+									    {block:Exposure}
+									        Exposure: {Exposure}
+									    {/block:Exposure}
+
+									    {block:FocalLength}
+									        Focal Length: {FocalLength}
+									    {/block:FocalLength}
+							        {/block:Exif}
+							        -->
+		                		{/block:Photos}
+
+	                			{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+							</div>
+						{/block:Photoset}
+
+		                <!-- /1.2 -->
+
+		                {block:Video}
+		                    <div class="video content">
+		                        {Video-500}
+		                        {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+		                    </div>
+		                {/block:Video}
+
+		                {block:Audio}
+		                    <div class="audio content">
+								{block:IfShowAlbumArt}
+									{block:AlbumArt}
+										<div class="album_art_div">
+											<img src="{AlbumArtURL}" class="album_art_img" />
+										</div>
+									{/block:AlbumArt}
+								{/block:IfShowAlbumArt}
+		                        {AudioPlayerGrey}
+		                        {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+		                    </div>
+		                {/block:Audio}
+
+		                {block:Quote}
+		                    <div class="quote content">
+		                        <div class="quote_body">
+									<q>{Quote}</q>
+								</div>
+		                        {block:Source}<div class="caption">{Source}</div>{/block:Source}
+		                    </div>
+		                {/block:Quote}
+
+		                {block:Chat}
+		                    <div class="conversation content">
+		                        {block:Title}<h3>{Title}</h3>{/block:Title}
+		                        {block:Lines}
+		                        	<div class="conversation_line">{block:Label}<span class="conversation_label">{Label}</span> {/block:Label}&ldquo;{Line}&rdquo;</div>
+		                        {/block:Lines}
+		                    </div>
+		                {/block:Chat}
+
+						{block:IfShowTags}
+							{block:HasTags}
+			                    <ul class="tags">
+			                        {block:Tags}
+			                            <li class="tag">
+			                                <a href="{TagURL}">#{Tag}</a>
+			                            </li>
+			                        {/block:Tags}
+			                    </ul>
+			                {/block:HasTags}
+						{/block:IfShowTags}
+
+						{block:IfShowDates}
+							{block:Date}
+								<div class="date">
+									<a href="{Permalink}">
+										{block:IfUseTimeAgoForDate}
+											{TimeAgo}
+										{/block:IfUseTimeAgoForDate}
+										{block:IfNotUseTimeAgoForDate}
+											{DayOfMonth} {ShortMonth} {Year}
+										{/block:IfNotUseTimeAgoForDate}
+
+										{block:NoteCount}
+											{block:IfShowNoteCounts}
+												/ {NoteCountWithLabel}
+											{/block:IfShowNoteCounts}
+										{/block:NoteCount}
+									</a>
+								</div>
+							{/block:Date}
+						{/block:IfShowDates}
+
+						{block:NoteCount}
+							{block:IfNotShowDates}
+								{block:IfShowNoteCounts}
+									<div class="date">
+										<a href="{Permalink}">{NoteCountWithLabel}</a>
+									</div>
+								{/block:IfShowNoteCounts}
+							{/block:IfNotShowDates}
+						{/block:NoteCount}
+					</li>
+				{/block:Posts}
+			</ul>
+
+			{block:PostNotes}
+				{block:IfShowNotesOnPermalinkPages}
+					<div id="post_notes">{PostNotes}</div>
+				{/block:IfShowNotesOnPermalinkPages}
+			{/block:PostNotes}
+
+			{block:IfInfiniteScrolling}
+				<div id="pagers">
+					<p onclick="more()">loading&hellip;</p>
+				</div>
+			{/block:IfInfiniteScrolling}
+
+			{block:IfShowFollowedTumblrs}
+				{block:IndexPage}
+					{block:Following}
+						<ul id="following">
+							{block:Followed}<li class="followed"><a href="{FollowedURL}" title="{FollowedName} - {FollowedTitle}"><img src="{FollowedPortraitURL-24}" alt="{FollowedName} - {FollowedTitle}" /></a></li>{/block:Followed}
+						</ul>
+					{/block:Following}
+				{/block:IndexPage}
+			{/block:IfShowFollowedTumblrs}
+
+			{block:IfNotInfiniteScrolling}
+				{block:Pagination}
+					<div id="pagers">
+						<p>{lang:Page CurrentPage of TotalPages}</p>
+			            {block:NextPage}
+			                <p><a href="{NextPage}">{lang:Next}</a></p>
+			            {/block:NextPage}
+						{block:PreviousPage}
+			                <p><a href="{PreviousPage}">{lang:Previous}</a></p>
+			            {/block:PreviousPage}
+					</div>
+				{/block:Pagination}
+			{/block:IfNotInfiniteScrolling}
+
+			{block:IfShowFooterText}
+				<div id="footer">
+					{text:Footer Text}
+				</div>
+			{/block:IfShowFooterText}
+		</div>
+
+		<!--
+            This Tumblr Theme and all of its CSS, Javascript,
+            and media assets are subject to Tumblr's Terms of Service:
+
+            http://www.tumblr.com/terms_of_service
+        -->
+	</body>
+</html>
